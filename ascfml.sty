@@ -1,0 +1,31 @@
+\ProvidesPackage{ascfml}
+[2018/8/27 formula in ascii-art]
+
+\let\metaimply\Rightarrow
+\let\imply\supset
+
+
+\DeclareOption{to}{\let\imply\to}
+\DeclareOption{turnstile}{\let\metaimply\vdash}
+
+\ProcessOptions
+
+
+%%%%%%%%%%%%%%%%%%% like ascii %%%%%%%%%%%%%%%%%%%%%
+\def\ascfml{%
+    \bgroup\asc@config
+    \asc@input
+}
+\def\asc@input#1{%
+    $#1$\egroup}
+{\catcode`\/\active \catcode`\=\active \catcode`\-\active  
+\gdef\asc@config{%
+    \catcode`\/\active
+    \catcode`\-\active
+    \catcode`\=\active
+    \let\/\lor
+    \def/{\@ifnextchar\ {\land\@gobble}{\char`\/ }}%
+    \def~{\lnot}%
+    \def={\@ifnextchar>{\metaimply\@gobble}{\char`\=}}%
+    \def-{\@ifnextchar>{\imply\@gobble}{\char`\-}}%
+}}
