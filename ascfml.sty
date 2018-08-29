@@ -1,15 +1,14 @@
 \ProvidesPackage{ascfml}
 [2018/8/27 formula in ascii-art]
 
-\let\metaimply\Rightarrow
-\let\imply\supset
-
-
+%%%%%%% option for "\usepackage"
+\DeclareOption{supset}{\let\imply\supset}
 \DeclareOption{to}{\let\imply\to}
+\DeclareOption{Rightarrow}{\let\metaimply\Rightarrow}
 \DeclareOption{turnstile}{\let\metaimply\vdash}
 
+\ExecuteOptions{supset,Rightarrow}
 \ProcessOptions
-
 
 %%%%%%%%%%%%%%%%%%% like ascii %%%%%%%%%%%%%%%%%%%%%
 \def\ascfml{%
