@@ -2,5 +2,5 @@
 You can write propositional formula
 in ascii-art.
 
-##usage
+## usage
 \ascfml{`formula`}
